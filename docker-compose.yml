@@ -1,0 +1,72 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    container_name: backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=development
+      - PYTHONUNBUFFERED=1
+      - MCP_SERVER_URL=http://mcp_server:8001
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app/backend
+      - ./ml:/app/ml
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - mcp_server
+    networks:
+      - app_network
+
+  mcp_server:
+    build:
+      context: .
+      dockerfile: ./ml/Dockerfile
+    container_name: mcp_server
+    ports:
+      - "8001:8001"
+    environment:
+      - ENV=development
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    volumes:
+      - ./ml:/app/ml
+    command: uvicorn ml.mcp_server.main:app --host 0.0.0.0 --port 8001 --reload
+    networks:
+      - app_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend/src:/app/src
+      - /app/node_modules
+    command: npm start
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
