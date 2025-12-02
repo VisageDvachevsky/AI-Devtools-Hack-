@@ -1,4 +1,4 @@
-.PHONY: help install dev up down logs clean test format lint proto check
+.PHONY: help install dev up down logs clean test format lint check
 
 help:
 	@echo "Available commands:"
@@ -12,7 +12,6 @@ help:
 	@echo "  make check      - Check if all services are running"
 	@echo "  make format     - Format code with black"
 	@echo "  make lint       - Lint code with ruff"
-	@echo "  make proto      - Generate gRPC code from proto files"
 
 install:
 	poetry install
@@ -47,10 +46,3 @@ format:
 lint:
 	poetry run ruff check backend ml
 	poetry run mypy backend ml
-
-proto:
-	python -m grpc_tools.protoc \
-		-I./protos \
-		--python_out=./backend/services \
-		--grpc_python_out=./backend/services \
-		./protos/*.proto
