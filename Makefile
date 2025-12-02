@@ -1,9 +1,10 @@
-.PHONY: help install dev up down logs clean test format lint check
+.PHONY: help install install-hooks dev up down logs clean test format lint check
 
 help:
 	@echo "Available commands:"
-	@echo "  make install    - Install dependencies with Poetry"
-	@echo "  make dev        - Run development environment"
+	@echo "  make install       - Install dependencies with Poetry"
+	@echo "  make install-hooks - Install git pre-commit hooks"
+	@echo "  make dev           - Run development environment"
 	@echo "  make up         - Start all services with docker-compose"
 	@echo "  make down       - Stop all services"
 	@echo "  make logs       - Show logs from all services"
@@ -15,6 +16,9 @@ help:
 
 install:
 	poetry install
+
+install-hooks:
+	@./scripts/install-hooks.sh
 
 dev:
 	docker-compose up --build

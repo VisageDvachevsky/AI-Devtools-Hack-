@@ -3,7 +3,13 @@
 ## Автоматическая настройка
 
 ```bash
+# 1. Настройка окружения
 cp .env.example .env
+
+# 2. Установка git hooks (ВАЖНО!)
+make install-hooks
+
+# 3. Запуск сервисов
 make dev
 ```
 
