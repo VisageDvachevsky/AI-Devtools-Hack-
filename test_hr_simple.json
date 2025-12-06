@@ -1,0 +1,25 @@
+{
+  "role": "Python Developer",
+  "job_description": "Ищем Python разработчика для работы над проектами",
+
+  "skills": ["python"],
+  "nice_to_have_skills": ["docker", "fastapi"],
+
+  "salary_from": 150000,
+  "salary_to": 250000,
+
+  "candidates": [
+    {
+      "github_username": "gvanrossum",
+      "full_name": "Guido van Rossum",
+      "resume_text": "Python creator, 35 years of Python experience",
+      "repos_limit": 15
+    },
+    {
+      "github_username": "torvalds",
+      "full_name": "Linus Torvalds",
+      "resume_text": "Linux kernel developer, C programming expert",
+      "repos_limit": 10
+    }
+  ]
+}

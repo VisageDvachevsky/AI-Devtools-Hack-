@@ -4,10 +4,9 @@ import inspect
 
 class ToolRegistry:
     """
-    Example:
-        @tool_registry.register(name="search_web", description="Search the web")
-        async def search_web(query: str) -> Dict[str, Any]:
-            return {"results": [...]}
+    Простой реестр MCP-инструментов. Инструменты регистрируются через декоратор
+    @tool_registry.register(name="...", description="...", parameters={...})
+    и могут быть вызваны по имени.
     """
 
     def __init__(self):
@@ -17,7 +16,7 @@ class ToolRegistry:
         self,
         name: str,
         description: str = "",
-        parameters: Dict[str, Any] = None
+        parameters: Dict[str, Any] | None = None,
     ):
         def decorator(func: Callable):
             self._tools[name] = {
@@ -25,9 +24,10 @@ class ToolRegistry:
                 "description": description,
                 "function": func,
                 "parameters": parameters or self._extract_parameters(func),
-                "is_async": inspect.iscoroutinefunction(func)
+                "is_async": inspect.iscoroutinefunction(func),
             }
             return func
+
         return decorator
 
     def _extract_parameters(self, func: Callable) -> Dict[str, Any]:
@@ -35,8 +35,10 @@ class ToolRegistry:
         params = {}
         for param_name, param in sig.parameters.items():
             params[param_name] = {
-                "type": param.annotation.__name__ if param.annotation != inspect.Parameter.empty else "any",
-                "required": param.default == inspect.Parameter.empty
+                "type": param.annotation.__name__
+                if param.annotation != inspect.Parameter.empty
+                else "any",
+                "required": param.default == inspect.Parameter.empty,
             }
         return params
 
@@ -54,15 +56,15 @@ class ToolRegistry:
                 result = func(**parameters)
 
             return {"success": True, "result": result}
-        except Exception as e:
-            return {"success": False, "error": str(e)}
+        except Exception as e:  # noqa: BLE001
+            return {"success": False, "error": str(e), "tool": tool_name}
 
     def list_tools(self) -> List[Dict[str, Any]]:
         return [
             {
                 "name": tool["name"],
                 "description": tool["description"],
-                "parameters": tool["parameters"]
+                "parameters": tool["parameters"],
             }
             for tool in self._tools.values()
         ]

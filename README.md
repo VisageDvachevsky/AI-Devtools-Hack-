@@ -1,8 +1,6 @@
-# AI Devtools Hack - MCP Business AI Transformation
+# AI Devtools Hack - MCP HR Recruitment System
 
-Бизнес-ориентированный MCP сервер с мультиагентной системой для автоматизации бизнес-процессов.
-
-**Первый раз здесь? Читай [FIRST_RUN.md](FIRST_RUN.md) для инструкций по запуску.**
+Enterprise-уровень система рекрутинга на базе MCP, автоматизирующая процесс подбора кандидатов через анализ GitHub профилей и рыночных данных.
 
 ## Архитектура
 
@@ -52,9 +50,55 @@ make dev
 
 Сервисы будут доступны по адресам:
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
+- Backend API: http://localhost:8005
 - MCP Server: http://localhost:8001
-- API Docs: http://localhost:8000/docs
+- API Docs: http://localhost:8005/docs
+
+### HR Recruitment API
+
+Основной эндпоинт для автоматизации рекрутинга с интеллектуальным скорингом кандидатов.
+
+Возможности:
+- Анализ рынка труда через HH.ru API (зарплаты, требуемые навыки, конкуренция)
+- Глубокий анализ GitHub профилей (навыки, активность, качество кода)
+- Строгая фильтрация по обязательным требованиям (mandatory skills)
+- Автоматическая классификация навыков (mandatory/preferred/optional)
+- Интеллектуальные рекомендации (кого звать на интервью, риски, пробелы в навыках)
+- Кеширование результатов в Redis (30 минут TTL)
+
+Пример запроса:
+
+```bash
+curl -X POST http://localhost:8005/api/v1/hr/run \
+  -H "Content-Type: application/json" \
+  -d '{
+        "role": "Senior Backend Python Developer",
+        "skills": ["python", "fastapi", "postgresql", "docker"],
+        "nice_to_have_skills": ["kubernetes", "redis"],
+        "salary_from": 250000,
+        "salary_to": 400000,
+        "candidates": [
+          {
+            "github_username": "donnemartin",
+            "repos_limit": 20,
+            "resume_text": "8+ years Python backend experience..."
+          }
+        ]
+      }'
+```
+
+Ответ содержит:
+- `market` - рыночные данные HH.ru (вакансии, зарплаты, топ компании)
+- `candidates` - анализ GitHub профилей кандидатов
+- `report` - детальный отчет с рекомендациями:
+  - Скоринг кандидатов (score 0-100, decision: go/hold/no)
+  - Mandatory/preferred skills coverage
+  - Риски и блокирующие причины
+  - Skill gaps анализ
+  - Рекомендации по интервью
+  - Market insights (supply/demand, competitive salary)
+
+Подробнее: `docs/API_SCHEMA_GUIDE.md`
 
 ### Команды для разработки
 
@@ -153,7 +197,7 @@ EVOLUTION_API_URL=https://api.cloud.ru/v1
 
 ```bash
 REDIS_HOST=redis
-REDIS_PORT=6379
+REDIS_PORT=6380
 MCP_SERVER_URL=http://mcp_server:8001
 ```
 
@@ -235,11 +279,37 @@ docker-compose logs -f backend
 
 ## Документация
 
+### Для пользователей
+- `docs/API_SCHEMA_GUIDE.md` - Полная спецификация API запросов
+- `docs/TESTING_GUIDE.md` - Руководство по тестированию системы
+- API Docs: http://localhost:8005/docs
+
+### Для разработчиков
+- `docs/MCP_INTEGRATION.md` - Архитектура MCP интеграции и рекомендации
 - `docs/MCP_BASICS.md` - Основы MCP протокола
 - `docs/ML_INTEGRATION_GUIDE.md` - Гайд по ML интеграции
 - `docs/QUICKSTART_ML.md` - Быстрый старт для ML
 - `docs/TROUBLESHOOTING.md` - Решение проблем
-- API Docs: http://localhost:8000/docs
+
+### Тестирование
+
+Быстрая проверка системы:
+```bash
+./test_hr.sh
+```
+
+Ручное тестирование:
+```bash
+# Простой тест (только Python обязателен)
+curl -X POST http://localhost:8005/api/v1/hr/run \
+  -H "Content-Type: application/json" \
+  -d @test_hr_simple.json | jq .
+
+# Полный тест (6 обязательных навыков)
+curl -X POST http://localhost:8005/api/v1/hr/run \
+  -H "Content-Type: application/json" \
+  -d @test_hr_request_full.json | jq .
+```
 
 ## Лицензия
 

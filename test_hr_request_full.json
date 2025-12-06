@@ -1,0 +1,221 @@
+{
+  "role": "Senior Backend Python Developer",
+  "job_description": "Мы ищем опытного Backend разработчика для работы над высоконагруженным API нашего продукта. Вы будете проектировать и разрабатывать микросервисы на Python, оптимизировать производительность, работать с большими данными. Требуется опыт с FastAPI, PostgreSQL, Docker, и навыки проектирования распределенных систем.",
+
+  "location": "1",
+  "work_format": "hybrid",
+  "relocation_provided": true,
+
+  "skills": ["python", "fastapi", "postgresql", "docker", "redis", "kubernetes"],
+  "nice_to_have_skills": ["graphql", "kafka", "prometheus", "terraform"],
+  "seniority_level": "senior",
+  "min_years_experience": 5,
+
+  "salary_from": 250000,
+  "salary_to": 400000,
+  "salary_currency": "RUB",
+  "benefits": [
+    "ДМС для сотрудника и семьи",
+    "Оплата обучения и конференций",
+    "Спортивная компенсация",
+    "Гибкий график",
+    "30 дней отпуска"
+  ],
+
+  "company_name": "TechCorp",
+  "company_size": "medium",
+  "company_industry": "FinTech",
+  "team_size": 12,
+
+  "employment_type": "full_time",
+  "project_type": "product",
+
+  "required_languages": [
+    {
+      "language": "russian",
+      "level": "native"
+    },
+    {
+      "language": "english",
+      "level": "B2"
+    }
+  ],
+  "required_certifications": [],
+
+  "interview_stages": 4,
+  "decision_deadline": "2025-01-15",
+  "vacancy_priority": "urgent",
+  "hiring_manager": "Иван Петров",
+
+  "per_page": 20,
+  "mandatory_threshold": 0.7,
+  "preferred_threshold": 0.3,
+
+  "candidates": [
+    {
+      "github_username": "torvalds",
+      "full_name": "Linus Torvalds",
+      "email": "linus@example.com",
+      "phone": "+7 999 123-45-67",
+      "linkedin_url": "https://linkedin.com/in/torvalds",
+      "portfolio_url": "https://github.com/torvalds",
+
+      "resume_text": "Experienced Linux kernel developer with deep knowledge of C programming, systems architecture, and version control. Created Git version control system. Expert in low-level programming, operating systems, and distributed systems architecture. Strong background in performance optimization and scalability.",
+      "current_position": "Chief Architect at Linux Foundation",
+      "years_of_experience": 30,
+
+      "lookback_days": 180,
+      "repos_limit": 10,
+
+      "expected_salary_from": 300000,
+      "expected_salary_to": 500000,
+      "current_location": "Москва",
+      "relocation_willing": false,
+      "remote_willing": true,
+      "availability_date": "2025-02-01",
+      "notice_period_days": 30,
+
+      "english_level": "C2",
+      "other_languages": ["finnish", "swedish"],
+      "certifications": [],
+
+      "education": "MSc Computer Science, University of Helsinki",
+      "previous_companies": ["Transmeta", "OSDL", "Linux Foundation"],
+
+      "source": "linkedin",
+      "current_status": "new",
+      "notes": "Very experienced, but background in C/Linux rather than Python/Web"
+    },
+    {
+      "github_username": "gvanrossum",
+      "full_name": "Guido van Rossum",
+      "email": "guido@python.org",
+      "phone": "+7 999 234-56-78",
+      "linkedin_url": "https://linkedin.com/in/gvanrossum",
+      "portfolio_url": "https://www.python.org",
+
+      "resume_text": "Creator of Python programming language. Over 30 years of experience in language design, compilers, and software architecture. Strong background in Python core development, type systems, and language evolution. Experience with web frameworks and backend development. Led Python development at Dropbox and Microsoft.",
+      "current_position": "Distinguished Engineer at Microsoft",
+      "years_of_experience": 35,
+
+      "lookback_days": 365,
+      "repos_limit": 15,
+
+      "expected_salary_from": 400000,
+      "expected_salary_to": 600000,
+      "current_location": "Санкт-Петербург",
+      "relocation_willing": false,
+      "remote_willing": true,
+      "availability_date": "2025-03-01",
+      "notice_period_days": 60,
+
+      "english_level": "native",
+      "other_languages": ["dutch"],
+      "certifications": ["Python Software Foundation Fellow"],
+
+      "education": "MSc Mathematics & Computer Science, University of Amsterdam",
+      "previous_companies": ["Google", "Dropbox", "Microsoft", "Elemental Security"],
+
+      "source": "referral",
+      "current_status": "screening",
+      "notes": "Python creator! But need to verify modern web framework experience (FastAPI/Django)"
+    },
+    {
+      "github_username": "donnemartin",
+      "full_name": "Donne Martin",
+      "email": "donne@example.com",
+      "phone": "+7 999 345-67-89",
+      "linkedin_url": "https://linkedin.com/in/donnemartin",
+      "portfolio_url": "https://github.com/donnemartin",
+
+      "resume_text": "Senior Python Backend Developer specializing in scalable web services, data engineering, and cloud architecture. 8+ years of experience building high-performance APIs with FastAPI, Flask, and Django. Expert in PostgreSQL, Redis, Docker, Kubernetes. Strong DevOps skills with AWS and Terraform. Contributed to multiple open-source projects including system design resources and data science tools.",
+      "current_position": "Senior Backend Engineer at Meta",
+      "years_of_experience": 8,
+
+      "lookback_days": 90,
+      "repos_limit": 20,
+
+      "expected_salary_from": 280000,
+      "expected_salary_to": 380000,
+      "current_location": "Москва",
+      "relocation_willing": true,
+      "remote_willing": true,
+      "availability_date": "2025-01-20",
+      "notice_period_days": 14,
+
+      "english_level": "C1",
+      "other_languages": ["russian"],
+      "certifications": [
+        "AWS Certified Solutions Architect",
+        "Kubernetes Administrator (CKA)"
+      ],
+
+      "education": "BS Computer Science, Stanford University",
+      "previous_companies": ["Facebook", "Amazon", "Startup.io"],
+
+      "source": "job_board",
+      "current_status": "new",
+      "notes": "Strong technical profile with modern stack. Good fit for requirements."
+    },
+    {
+      "github_username": "kennethreitz",
+      "full_name": "Kenneth Reitz",
+      "email": "kenneth@example.com",
+      "linkedin_url": "https://linkedin.com/in/kennethreitz",
+
+      "resume_text": "Python developer and open-source contributor. Created Requests library (50M+ downloads). Experience with web development, API design, and developer tools. Background in backend development with Flask and various Python frameworks.",
+      "current_position": "Python Architect",
+      "years_of_experience": 12,
+
+      "repos_limit": 15,
+
+      "expected_salary_from": 250000,
+      "expected_salary_to": 350000,
+      "current_location": "Удаленно",
+      "remote_willing": true,
+      "availability_date": "2025-01-10",
+      "notice_period_days": 0,
+
+      "english_level": "native",
+      "certifications": [],
+
+      "education": "Self-taught",
+      "previous_companies": ["Heroku", "DigitalOcean"],
+
+      "source": "linkedin",
+      "current_status": "new",
+      "notes": "Strong Python background, but need to verify FastAPI/modern framework experience"
+    },
+    {
+      "github_username": "tiangolo",
+      "full_name": "Sebastián Ramírez",
+      "email": "sebastian@example.com",
+      "linkedin_url": "https://linkedin.com/in/tiangolo",
+
+      "resume_text": "Creator of FastAPI framework. Senior Python Backend Developer with 10+ years experience in web development, API design, and distributed systems. Expert in FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Docker, Kubernetes. Strong background in building high-performance async APIs and developer tools. Experience with microservices architecture and cloud-native development.",
+      "current_position": "Senior Software Engineer",
+      "years_of_experience": 10,
+
+      "repos_limit": 20,
+
+      "expected_salary_from": 300000,
+      "expected_salary_to": 450000,
+      "current_location": "Берлин (готов к релокации)",
+      "relocation_willing": true,
+      "remote_willing": true,
+      "availability_date": "2025-02-01",
+      "notice_period_days": 30,
+
+      "english_level": "C2",
+      "other_languages": ["spanish"],
+      "certifications": ["Docker Certified Associate"],
+
+      "education": "BS Computer Engineering",
+      "previous_companies": ["Explosion AI", "Independent"],
+
+      "source": "referral",
+      "current_status": "screening",
+      "notes": "FastAPI creator - perfect technical fit! Verify culture fit and team collaboration."
+    }
+  ]
+}
