@@ -113,7 +113,7 @@ python3 test_full_pipeline_github.py
 
   | Кандидат     | Вакансия                 | Score  | Decision |
   |--------------|--------------------------|--------|----------|
-  | Амир Тагиров | Senior Backend Developer | 73/100 | GO       |
+  | Амир Тагиров | Senior Backend Developer | 100/100| STRONG_GO|
   | Амир Тагиров | DevOps/SRE Engineer      | 57/100 | MAYBE    |
   | Амир Тагиров | C++ Performance Engineer | 37/100 | NO_GO    |
 
@@ -139,8 +139,4 @@ python3 test_full_pipeline_github.py
 python3 test_pipeline_simple.py
 ```
 
-1. Добавить GITHUB_TOKEN в .env для production
-2. Исправить resume parser skill extraction
-3. Разобраться с batch processing queue
-4. Добавить integration tests для всех фич
-5. Настроить Prometheus + Grafana мониторинг
+

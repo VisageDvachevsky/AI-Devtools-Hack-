@@ -205,12 +205,15 @@ async def main():
 
     print_section("STEP 1: Resume Parsing (Advanced, No LLM)")
 
+    # Собираем все навыки из всех вакансий
+    all_skills = set()
+    for vac in VACANCIES:
+        all_skills.update(vac["required_skills"])
+        all_skills.update(vac["nice_to_have_skills"])
+
     resume = parse_resume_advanced(
         RESUME_TEXT,
-        required_skills=[
-            "python", "fastapi", "postgresql", "redis", "docker", "c++",
-            "kubernetes", "grpc", "prometheus", "grafana"
-        ]
+        required_skills=list(all_skills)
     )
 
     print(f"Name: {resume.get('full_name')}")
